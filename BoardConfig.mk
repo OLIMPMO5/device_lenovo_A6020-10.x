@@ -129,7 +129,6 @@ TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
-TARGET_EXFAT_DRIVER := exfat
 
 # FM
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
