@@ -22,7 +22,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_l_mr1.mk
 $(call inherit-product, device/lenovo/A6020/device.mk)
 
 # Inherit some common AEX stuff
-$(call inherit-product, vendor/aosp/common.mk)
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
@@ -42,6 +42,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-lenovo
 # Use Gapps
 # Set this flag in build script
 ifeq ($(CURRENT_BUILD_TYPE), gapps)
+#$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
 TARGET_SHIPS_SEPERATE_GAPPS_BUILD := true
 WITH_GAPPS := true
 TARGET_GAPPS_ARCH := arm64

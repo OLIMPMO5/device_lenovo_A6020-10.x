@@ -25,6 +25,14 @@ TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_PHONY_TARGETS := true
 
+#SELinux
+SELINUX_IGNORE_NEVERALLOWS := true
+
+#Gapps
+#$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
+TARGET_GAPPS_ARCH := arm64
+IS_PHONE := true
+
 # Audio
 AUDIO_FEATURE_DEEP_BUFFER_RINGTONE := true
 AUDIO_FEATURE_ENABLED_AUDIOSPHERE := true
