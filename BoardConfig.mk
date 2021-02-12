@@ -29,7 +29,7 @@ BUILD_BROKEN_PHONY_TARGETS := true
 SELINUX_IGNORE_NEVERALLOWS := true
 
 #Gapps
-#$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
+$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
 TARGET_GAPPS_ARCH := arm64
 IS_PHONE := true
 
