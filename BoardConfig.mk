@@ -30,8 +30,8 @@ SELINUX_IGNORE_NEVERALLOWS := true
 
 #Gapps
 #$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
-#TARGET_GAPPS_ARCH := arm64
-#IS_PHONE := true
+TARGET_GAPPS_ARCH := arm64
+IS_PHONE := true
 
 # Audio
 AUDIO_FEATURE_DEEP_BUFFER_RINGTONE := true
