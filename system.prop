@@ -1,5 +1,7 @@
 # system.prop for A6020
 
+persist.service.adb.enable=1
+
 # Audio
 ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=7
@@ -134,6 +136,9 @@ persist.rild.nitz_short_ons_0=
 persist.rild.nitz_short_ons_1=
 persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
+
+# ParanoidDoze
+ro.sensor.proximity=true
 
 # Play store
 ro.com.google.clientidbase.am=android-lenovo

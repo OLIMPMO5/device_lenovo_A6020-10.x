@@ -39,6 +39,13 @@ PRODUCT_MANUFACTURER := Lenovo
 
 PRODUCT_GMS_CLIENTID_BASE := android-lenovo
 
+# ADb props
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp,adb \
+    ro.adb.secure=0 \
+    ro.secure=0 \
+    ro.debuggable=1
+
 # Use Gapps
 # Set this flag in build script
 #ifeq ($(CURRENT_BUILD_TYPE), gapps)
