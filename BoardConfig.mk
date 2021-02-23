@@ -29,7 +29,7 @@ BUILD_BROKEN_PHONY_TARGETS := true
 SELINUX_IGNORE_NEVERALLOWS := true
 
 # Display
-TARGET_SCREEN_DENSITY := 390
+TARGET_SCREEN_DENSITY := 443
 
 #Gapps
 #$(call inherit-product, vendor/opengapps/build/opengapps-packages.mk)
