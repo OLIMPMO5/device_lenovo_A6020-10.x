@@ -24,9 +24,6 @@ $(call inherit-product, device/lenovo/A6020/device.mk)
 # Inherit some common AEX stuff
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
-# Build type
-AOSP_BUILD_TYPE:= OFFICIAL
-
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
 TARGET_SCREEN_HEIGHT := 1920
