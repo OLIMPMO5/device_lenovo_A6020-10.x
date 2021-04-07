@@ -53,7 +53,7 @@ PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
 # Dirac
 PRODUCT_PACKAGES += \
     Dirac \
-		LenovoParts
+    LenovoParts
 
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.hwui.use_buffer_age=false
