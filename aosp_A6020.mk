@@ -30,6 +30,9 @@ TARGET_SCREEN_HEIGHT := 1920
 TARGET_BOOTANIMATION_HALF_RES := true
 TARGET_BOOT_ANIMATION_RES := 1080
 
+# Pixel Experience Specific stuffs
+PIXEL_BUILD_TYPE := OFFICIAL
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := A6020
 PRODUCT_NAME := aosp_A6020
