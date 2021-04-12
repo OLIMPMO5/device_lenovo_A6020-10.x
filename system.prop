@@ -1,5 +1,9 @@
 # system.prop for A6020
 
+# FISURI OTA
+CUSTOM_BUILD_TYPE := OFFICIAL
+IS_FISURI_VERSION := true
+
 persist.service.adb.enable=1
 
 org.pixelexperience.version=A6020
