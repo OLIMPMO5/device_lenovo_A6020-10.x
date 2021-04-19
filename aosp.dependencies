@@ -1,8 +1,8 @@
 [
   {
     "remote":      "github",
-    "repository":  "OLIMPMO5/vendor_lenovo_A6020-10.x",
+    "repository":  "OLIMPMO5/vendor_lenovo_A6020",
     "target_path": "vendor/lenovo/A6020",
-    "branch":      "main"
+    "branch":      "10"
   }
 ]
