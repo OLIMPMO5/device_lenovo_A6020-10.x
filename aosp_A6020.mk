@@ -39,10 +39,6 @@ PRODUCT_MANUFACTURER := Lenovo
 
 PRODUCT_GMS_CLIENTID_BASE := android-lenovo
 
-# FISURI OTA
-CUSTOM_BUILD_TYPE := OFFICIAL
-IS_FISURI_VERSION := true
-
 # ADb props
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp,adb \
