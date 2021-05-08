@@ -150,7 +150,7 @@ BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
 
 # Vendor security patch level
-VENDOR_SECURITY_PATCH := 2021-04-01
+VENDOR_SECURITY_PATCH := 2021-05-05
 
 # System properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
