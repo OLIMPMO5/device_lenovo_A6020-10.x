@@ -43,7 +43,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-lenovo
 CUSTOM_BUILD_TYPE := OFFICIAL
 IS_FISURI_VERSION := true
 
-# ADb props
+# ADB props
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp,adb \
     ro.adb.secure=0 \
@@ -51,10 +51,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.debuggable=1
 
 # Use Gapps
-# Set this flag in build script
-#ifeq ($(CURRENT_BUILD_TYPE), gapps)
 TARGET_SHIPS_SEPERATE_GAPPS_BUILD := true
 WITH_GAPPS := true
 TARGET_GAPPS_ARCH := arm64
 IS_PHONE := true
-#endif
