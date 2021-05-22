@@ -1,4 +1,4 @@
-# Copyright (C) 2021 The Pixel Experience Project
+# Copyright (C) 2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,10 +32,7 @@ def AddAssertion(info):
   pass
 
 def ReplaceDeviceConfig(info):
-  info.script.Mount("/system")
   info.script.AppendExtra('ui_print("Copying device specific files.");')
   info.script.AppendExtra('run_program("/sbin/sh", "/tmp/install/bin/move_files.sh");')
-  info.script.Unmount("/system")
-
 def RestoreDeviceConfig(info):
   pass
