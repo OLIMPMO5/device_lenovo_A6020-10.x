@@ -46,17 +46,4 @@
 
     <!-- Whether to show HD icon in the status bar for volte -->
     <bool name="config_display_hd_volte">true</bool>
-
-    <!-- FPSInfoService FPS node file path -->
-    <string name="config_fpsInfoSysNode" translatable="false">/sys/devices/virtual/graphics/fb0/measured_fps</string>
-
-    <!-- Allow devices to enforce the H265 encoder for screen recordings -->
-    <bool name="config_useNewScreenRecEncoder">false</bool>
-
-    <!-- LockScreenCharger current sysfs path -->
-    <string name="config_currentPath">/sys/class/power_supply/battery/current_now</string>
-
-    <!-- LockScreenCharger voltage sysfs path -->
-    <string name="config_voltagePath">/sys/class/power_supply/battery/voltage_now</string>
-
 </resources>
