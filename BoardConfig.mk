@@ -1,4 +1,6 @@
-# Copyright (C) 2021 The Pixel Experience Project
+#
+# Copyright (C) 2015-2016 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,26 +23,10 @@ DEVICE_PATH := device/lenovo/A6020
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_PHONY_TARGETS := true
-
-#Gapps
-TARGET_GAPPS_ARCH := arm64
-IS_PHONE := true
-
-# Asserts
-TARGET_OTA_ASSERT_DEVICE := A6020,A6020a40,A6020a41,A6020a46,A6020l36,A6020l37,K32c36,k5,k5_plus,vibe_k5
-
-# Architecture
-TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := cortex-a53
 
 # Audio
 AUDIO_FEATURE_DEEP_BUFFER_RINGTONE := true
 AUDIO_FEATURE_ENABLED_AUDIOSPHERE := true
-AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT := true
 AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_ENABLED_SND_MONITOR := true
@@ -69,6 +55,9 @@ BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
 
+# Asserts
+TARGET_OTA_ASSERT_DEVICE := A6020,A6020a40,A6020a41,A6020a46,A6020l36,A6020l37,K32c36,k5,k5_plus,vibe_k5
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -85,41 +74,28 @@ TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := A6020
 
 # Camera
+USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
 	/system/bin/mediaserver=23 \
 	/system/vendor/bin/mm-qcamera-daemon=23
 TARGET_USES_MEDIA_EXTENSIONS := true
-USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Charger
+BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
-
-# Crypto
-TARGET_HW_DISK_ENCRYPTION := true
-TARGET_KEYMASTER_WAIT_FOR_QSEE := true
-
-# Dexpreopt
-ifeq ($(HOST_OS),linux)
-ifneq ($(TARGET_BUILD_VARIANT),eng)
-DONT_DEXPREOPT_PREBUILTS := true
-USE_DEX2OAT_DEBUG := false
-WITH_DEXPREOPT := true
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
-WITH_DEXPREOPT_DEBUG_INFO := false
-endif
-endif
 
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-TARGET_DISABLE_POSTRENDER_CLEANUP := true
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
 TARGET_USES_ION := true
+TARGET_USES_NEW_ION_API := true
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x02000000U
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+TARGET_DISABLE_POSTRENDER_CLEANUP := true
 
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
@@ -127,51 +103,9 @@ TARGET_ENABLE_MEDIADRM_64 := true
 # DT2W
 TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
 
-# Filesystem
-TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
-TARGET_EXFAT_DRIVER := exfat
-
-# FM
-AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
-BOARD_HAVE_QCOM_FM := true
-TARGET_QCOM_NO_FM_FIRMWARE := true
-
-# Framework boost sched
-ENABLE_SCHED_BOOST := true
-
-# GPS
-TARGET_NO_RPC := true
-USE_DEVICE_SPECIFIC_GPS := true
-
-# HIDL
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
-
-# HWUI
-HWUI_COMPILE_FOR_PERF := true
-
-# Init
-TARGET_INIT_VENDOR_LIB := libinit_A6020
-TARGET_RECOVERY_DEVICE_MODULES := libinit_A6020
-
-# Kernel
-BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk pm.sleep_mode=1 loop.max_part=7
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-BOARD_KERNEL_CMDLINE += androidboot.btmacaddr=00:00:00:00:00:00
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_RAMDISK_OFFSET := 0x01000000
-BOARD_KERNEL_TAGS_OFFSET := 0x00000100
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-KERNEL_TOOLCHAIN := $(shell pwd)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-6.x/bin
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-TARGET_KERNEL_SOURCE := kernel/lenovo/msm8916
-TARGET_KERNEL_CONFIG := A6020_defconfig
-
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
-
-# Low Memory Devices
-MALLOC_SVELTE := true
+# Crypto
+TARGET_HW_DISK_ENCRYPTION := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -187,22 +121,65 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS := true
 
-# Platform
-TARGET_BOARD_PLATFORM := msm8916
+# Filesystem
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
+TARGET_EXFAT_DRIVER := exfat
+
+# FM
+AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
+BOARD_HAVE_QCOM_FM := true
+TARGET_QCOM_NO_FM_FIRMWARE := true
+
+# Vendor security patch level
+VENDOR_SECURITY_PATCH := 2016-10-01
+
+# System properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+
+# GPS
+USE_DEVICE_SPECIFIC_GPS := true
+TARGET_NO_RPC := true
+
+# HIDL
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+
+# Legacy memfd
+TARGET_HAS_MEMFD_BACKPORT := true
 
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
 
-# Recovery
-BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.full
+# Init
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_A6020
+TARGET_RECOVERY_DEVICE_MODULES := //$(DEVICE_PATH):libinit_A6020
 
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
+# Framework boost sched
+ENABLE_SCHED_BOOST := true
 
-# RIL
-TARGET_RIL_VARIANT := caf
-BOARD_PROVIDES_LIBRIL := false
+# Kernel
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk pm.sleep_mode=1 loop.max_part=7
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.btmacaddr=00:00:00:00:00:00
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_RAMDISK_OFFSET := 0x01000000
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+TARGET_KERNEL_SOURCE := kernel/lenovo/msm8916
+TARGET_KERNEL_CONFIG := A6020_defconfig
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
+# Low Memory Devices
+MALLOC_SVELTE := true
+
+# Architecture
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := cortex-a53
 
 # Second architecture
 TARGET_2ND_ARCH := arm
@@ -211,20 +188,32 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
+# Platform
+TARGET_BOARD_PLATFORM := msm8916
+
+# Recovery
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_DEVICE_DIRS += $(DEVICE_PATH)
+
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
+
+# RIL
+BOARD_PROVIDES_LIBRIL := false
+TARGET_USES_OLD_MNC_FORMAT := true
+
 # SELinux
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy-tmp
-SELINUX_IGNORE_NEVERALLOWS := true
+include device/qcom/sepolicy-legacy/sepolicy.mk
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+PLAT_PRIVATE_POLICY += $(DEVICE_PATH)/sepolicy/private
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
+    /system/vendor/lib/libril-qc-qmi-1.so|libaudioclient_shim.so \
+    /system/vendor/lib64/libril-qc-qmi-1.so|libcutils_shim.so \
     /system/vendor/lib64/lib-imsdpl.so|libshims_boringssl.so \
     /system/vendor/lib64/lib-imsvt.so|libshims_ims.so
-
-# System properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-
-# Vendor security patch level
-VENDOR_SECURITY_PATCH := 2021-05-05
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
@@ -238,3 +227,5 @@ TARGET_USES_QCOM_WCNSS_QMI := true
 PRODUCT_VENDOR_MOVE_ENABLED := true
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP  := "ap"
+WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
+
