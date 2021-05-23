@@ -1,0 +1,3 @@
+get_prop(appdomain, camera_prop);
+set_prop(appdomain, camera_prop)
+get_prop(appdomain, exported_camera_prop);
